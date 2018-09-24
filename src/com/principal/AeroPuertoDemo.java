@@ -76,6 +76,6 @@ public class AeroPuertoDemo {
 //				List<String> nombres = personas.stream().map(Persona::getNombre).collect(Collectors.toList());
 //
 //				LocalDate ahora = LocalDate.now();
-	}
-
-}
+	} //fin de main
+ 
+} //fin de clase

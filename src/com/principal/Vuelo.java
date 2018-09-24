@@ -22,7 +22,7 @@ public class Vuelo {
 	private LocalDate fechaDeLlegada;
 	private LocalTime horaDeSalida;
 	private LocalTime horaDeLlegada;
-	private static final Integer numeroDePlazas = 5;
+	private static final Integer numeroDePlazas = 10;
 	private Integer pasajeros;
 
 	public String getDestino() {
@@ -117,16 +117,16 @@ public class Vuelo {
 		// numero de plazas las dejo en 10 para mayor facilidad y al ser final, es 10 en
 		// todos
 		vuelos.add(new Vuelo("Australia", 140.05, LocalDate.of(2018, Month.SEPTEMBER, 26),
-				LocalDate.of(2018, Month.SEPTEMBER, 29), LocalTime.of(15, 00), LocalTime.of(20, 00), 10));
+				LocalDate.of(2018, Month.SEPTEMBER, 29), LocalTime.of(15, 00), LocalTime.of(20, 00), 7));
 
 		vuelos.add(new Vuelo("Belgica", 250.40, LocalDate.of(2018, Month.NOVEMBER, 01),
 				LocalDate.of(2018, Month.NOVEMBER, 10), LocalTime.of(12, 30), LocalTime.of(17, 45), 10));
 
 		vuelos.add(new Vuelo("Colombia", 700.97, LocalDate.of(2018, Month.DECEMBER, 19),
-				LocalDate.of(2018, Month.DECEMBER, 25), LocalTime.of(00, 00), LocalTime.of(23, 05), 10));
+				LocalDate.of(2018, Month.DECEMBER, 25), LocalTime.of(00, 00), LocalTime.of(23, 05), 11));
 
 		vuelos.add(new Vuelo("Dinamarca", 40.00, LocalDate.of(2019, Month.FEBRUARY, 02),
-				LocalDate.of(2019, Month.FEBRUARY, 10), LocalTime.of(13, 00), LocalTime.of(19, 00), 10));
+				LocalDate.of(2019, Month.FEBRUARY, 10), LocalTime.of(13, 00), LocalTime.of(19, 00), 3));
 
 		return vuelos;
 
