@@ -22,7 +22,7 @@ public class Vuelo {
 	private LocalDate fechaDeLlegada;
 	private LocalTime horaDeSalida;
 	private LocalTime horaDeLlegada;
-	private static final Integer numeroDePlazas = 0;
+	private static final Integer numeroDePlazas = 5;
 	private Integer pasajeros;
 
 	public String getDestino() {
