@@ -1,7 +1,12 @@
 package com.principal;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 
@@ -14,7 +19,9 @@ public class AeroPuertoDemo {
 		 * Cuarto:
 		 * 
 		 * 1. Obtener un listado de los vuelos que no admiten mas pasajeros, es decir,
-		 * que tienen el numero de plazas completo. 2. Obtener un listado de los vuelos
+		 * que tienen el numero de plazas completo. 
+		 * 
+		 * 2. Obtener un listado de los vuelos
 		 * que tienen fecha de salida prevista para el día de hoy. 3. Obtener un listado
 		 * de los vuelos cuya duración sea mayor de 10 horas. 4. Obtener un listado de
 		 * los vuelos que pueden demorar mas de un día en llegar a su destino. 5.
@@ -39,27 +46,22 @@ public class AeroPuertoDemo {
 		 * esta prevista su fecha de salida, en español.
 		 * 
 		 */
-		// creo una lista de personas
-		List<Vuelo> vuelos;
-		// obtengo todas las personas y las almaceno en variable personas
-		vuelos = Vuelo.getVuelos();
-		// vuelvo la variable personas en un array de tipo Persona
-		vuelos = new ArrayList<Vuelo>(vuelos);
-		// creo una lista con los nombre que obtengo de personas
-		List<Integer> listaVuelos = vuelos.stream().map(Vuelo::getPasajeros).collect(Collectors.toList());
-		// vuelvo la lista a un array
-		listaVuelos = new ArrayList<Integer>(listaVuelos);
+		
+				// creo una lista de vuelos
+				List<Vuelo> vuelos;
+				// obtengo todas las personas y las almaceno en variable personas
+				vuelos = Vuelo.getVuelos();
+				// vuelvo la variable vuelos en un array de tipo vuelo
+				vuelos = new ArrayList<Vuelo>(vuelos);
+				// creo una lista con los nombre que obtengo de personas
+				List<Integer> pasajero = pasajero.stream().max(Comparator<Vuelo::getPasajeros, Vuelo::getPasajeros>).collect(Collectors.toList());
+				// vuelvo la lista a un array
+				pasajero = new ArrayList<Integer>(pasajero);
+				System.out.println(pasajero);
 
-		System.out.println(listaVuelos);
-		
-		
-//        List<String> nombres = personas.stream().map(Persona::getNombre).collect(Collectors.toList());
+//				List<String> nombres = personas.stream().map(Persona::getNombre).collect(Collectors.toList());
 //
-//        LocalDate ahora = LocalDate.now();
-//
-//        Period periodo = Period.between(adulto, ahora);
-//        System.out.printf("Tu edad es: %s años, %s meses y %s días",
-//                periodo.getYears(), periodo.getMonths(), periodo.getDays());
+//				LocalDate ahora = LocalDate.now();
 	}
 
 }
