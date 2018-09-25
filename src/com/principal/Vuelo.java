@@ -19,8 +19,8 @@ public class Vuelo {
 
 	private String destino;
 	private Double precio;
-	private LocalDateTime fechaDeSalida;
-	private LocalDateTime fechaDeLlegada;
+	private LocalDate fechaDeSalida;
+	private LocalDate fechaDeLlegada;
 	private LocalTime horaDeSalida;
 	private LocalTime horaDeLlegada;
 	private static final Integer numeroDePlazas = 10;
@@ -42,19 +42,19 @@ public class Vuelo {
 		this.precio = precio;
 	}
 
-	public LocalDateTime getFechaDeSalida() {
+	public LocalDate getFechaDeSalida() {
 		return fechaDeSalida;
 	}
 
-	public void setFechaDeSalida(LocalDateTime fechaDeSalida) {
+	public void setFechaDeSalida(LocalDate fechaDeSalida) {
 		this.fechaDeSalida = fechaDeSalida;
 	}
 
-	public LocalDateTime getFechaDeLlegada() {
+	public LocalDate getFechaDeLlegada() {
 		return fechaDeLlegada;
 	}
 
-	public void setFechaDeLlegada(LocalDateTime fechaDeLlegada) {
+	public void setFechaDeLlegada(LocalDate fechaDeLlegada) {
 		this.fechaDeLlegada = fechaDeLlegada;
 	}
 
@@ -86,7 +86,7 @@ public class Vuelo {
 		return numeroDePlazas;
 	}
 
-	public Vuelo(String destino, Double precio, LocalDateTime fechaDeSalida, LocalDateTime fechaDeLlegada,
+	public Vuelo(String destino, Double precio, LocalDate fechaDeSalida, LocalDate fechaDeLlegada,
 			LocalTime horaDeSalida, LocalTime horaDeLlegada, Integer pasajeros) {
 		super();
 		this.destino = destino;
@@ -101,18 +101,18 @@ public class Vuelo {
         public static List<Vuelo> getVuelos() {
 		List<Vuelo> vuelos = new ArrayList<>();
 
-		vuelos.add(new Vuelo("Australia", 140.05, LocalDateTime.of(2018,  Month.OCTOBER, 03 , 00, 00, 00, 00),
-				LocalDateTime.of(2018, Month.OCTOBER, 03, 00, 00, 00, 00), LocalTime.of(15, 00), LocalTime.of(20, 00), 7));
+		vuelos.add(new Vuelo("Australia", 140.05, LocalDate.of(2018,  Month.OCTOBER, 03),
+				LocalDate.of(2018, Month.OCTOBER, 03), LocalTime.of(15, 00), LocalTime.of(20, 00), 7));
 
-		vuelos.add(new Vuelo("Belgica", 250.40, LocalDateTime.of(2018, Month.NOVEMBER, 01, 14, 20, 00, 00),
-				LocalDateTime.of(2018, Month.NOVEMBER, 10, 13, 00, 00, 00), LocalTime.of(12, 30), LocalTime.of(17, 45), 10));
+		vuelos.add(new Vuelo("Belgica", 250.40, LocalDate.of(2018, Month.NOVEMBER, 01),
+				LocalDate.of(2018, Month.NOVEMBER, 10), LocalTime.of(12, 30), LocalTime.of(17, 45), 10));
 
-		vuelos.add(new Vuelo("Colombia", 700.97, LocalDateTime.of(2018, Month.DECEMBER, 19, 15, 20, 30, 00),
-				LocalDateTime.of(2018, Month.DECEMBER, 25, 20, 30, 00, 00), LocalTime.of(00, 00), LocalTime.of(23, 05), 8));
+		vuelos.add(new Vuelo("Colombia", 700.97, LocalDate.of(2018, Month.DECEMBER, 19),
+				LocalDate.of(2018, Month.DECEMBER, 25), LocalTime.of(00, 00), LocalTime.of(23, 05), 8));
 		
 
-		vuelos.add(new Vuelo("Dinamarca", 40.00, LocalDateTime.of(2019, Month.FEBRUARY, 02, 23, 50, 00, 00),
-				LocalDateTime.of(2019, Month.FEBRUARY, 10, 00, 00, 00, 00), LocalTime.of(13, 00), LocalTime.of(19, 00), 3));
+		vuelos.add(new Vuelo("Dinamarca", 40.00, LocalDate.of(2019, Month.FEBRUARY, 02),
+				LocalDate.of(2019, Month.FEBRUARY, 10), LocalTime.of(13, 00), LocalTime.of(19, 00), 3));
 
 		return vuelos;
 
@@ -122,8 +122,8 @@ public class Vuelo {
 
 	@Override
 	public String toString() {
-		return "Vuelo [destino=" + destino + ", precio=" + precio + ", fechaDeSalida=" + fechaDeSalida
+		return "Vuelo destino=" + destino + ", precio=" + precio + ", fechaDeSalida=" + fechaDeSalida
 				+ ", fechaDeLlegada=" + fechaDeLlegada + ", horaDeSalida=" + horaDeSalida + ", horaDeLlegada="
-				+ horaDeLlegada + ",pasajeros=" + pasajeros + "]";
+				+ horaDeLlegada + ",pasajeros=" + pasajeros + "";
 	}
 } //fin main

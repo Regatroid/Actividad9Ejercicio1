@@ -87,35 +87,40 @@ public class Aeropuerto {
 		 */
 		List<Vuelo> vuelosCompletos = vuelos.stream().filter(a -> a.getPasajeros() == Vuelo.getNumerodeplazas())
 				.collect(Collectors.toList());
-		System.out.println(vuelosCompletos);
+		vuelosCompletos.forEach(v -> System.out.println(v));
+	
 		/*
 		 * * 2. Obtener un listado de los vuelos que tienen fecha de salida prevista
 		 * para el día de hoy.
 		 */
 
-		List<Vuelo> fechaSalidaHoy = vuelos.stream().filter(b -> b.getFechaDeSalida().equals(LocalDateTime.now()))
+		List<Vuelo> fechaSalidaHoy = vuelos.stream().filter(b -> b.getFechaDeSalida().equals(LocalDate.now()))
 				.collect(Collectors.toList());
-		System.out.println(fechaSalidaHoy);
+		
+		fechaSalidaHoy.stream()
+		.forEach(System.out::println);
 
 		/*
 		 * * 3. Obtener un listado de los vuelos cuya duración sea mayor de 10 horas.
 		 */
 
-		List<Vuelo> masHoras = vuelos.stream().filter(c -> c.getHoraDeSalida().compareTo(c.getHoraDeLlegada()) > 10)
-				.collect(Collectors.toList());
+		List<Vuelo> masHoras = vuelos.stream()
+				.filter(c -> ChronoUnit.HOURS.between(LocalDateTime.of(c.getFechaDeSalida(), c.getHoraDeSalida()), LocalDateTime.of(c.getFechaDeLlegada(), c.getHoraDeLlegada()))
+						> 10).collect(Collectors.toList());
+						
+		//periodo dias mes y años
+		//duracion horas minutos y segundos
+		
+		//esta es una forma de usarlo con chronounit que originalmente no funcionaria
+						
+				System.out.println(masHoras);
+			
+				/*esto seria otra variante para el ejercicio */
+		masHoras.stream()
+			.filter(System.out::println);
+		
 		System.out.println(masHoras);
 
-//		  List<Vuelo> vuelosMasDiezHoras = vuelos.stream().filter( s -> (Duration.between( s.getFechaDeSalida(),  s.getFechaDeLlegada()) > 1
-//				  			//&& (between(s.getHoraSaida(), s.getHoraLlegada() > 10
-//				  			.collect(Collectors.toList())));
-//		  System.out.println(vuelosMasDiezHoras);
-
-//		  List<Vuelo> vuelosMasDiezHoras = vuelos.stream().
-//				  filter( s -> (Duration.between(s.getFechaDeSalida(), s.getFechaDeLlegada().getHour() > 24) && 
-//						  Duration.between(s.getHoraDeSalida(), s.getHoraDeLlegada().getHour() > 10))).
-//				  collect(Collectors.toList());
-
-//		  System.out.println(vuelosMasDiezHoras);
 
 		/*
 		 * * 4. Obtener un listado de los vuelos que pueden demorar mas de un día en
@@ -136,14 +141,14 @@ public class Aeropuerto {
 		 * dias).
 		 */
 		List<Vuelo> vuelosMasSemana = vuelos.stream()
-				.filter(e -> e.getFechaDeSalida().equals(LocalDateTime.now().plusDays(8)))
+				.filter(e -> e.getFechaDeSalida().equals(LocalDate.now().plusDays(8)))
 				.collect(Collectors.toList());
 		System.out.println(vuelosMasSemana);
 
 		/* 7. Mostrar los vuelos que saldrán en los próximos 7 días. */
 
 		List<Vuelo> vuelosSieteDias = vuelos.stream()
-				.filter(f -> f.getFechaDeSalida().isAfter(LocalDateTime.now().plusDays(7)))
+				.filter(f -> f.getFechaDeSalida().isAfter(LocalDate.now().plusDays(7)))
 				.collect(Collectors.toList());
 		System.out.println(vuelosSieteDias);
 
