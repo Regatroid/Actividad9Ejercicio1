@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
@@ -116,10 +117,12 @@ public class Aeropuerto {
 				System.out.println(masHoras);
 			
 				/*esto seria otra variante para el ejercicio */
-		masHoras.stream()
-			.filter(System.out::println);
 		
-		System.out.println(masHoras);
+				System.out.println("");
+		List<Vuelo> masHoras2 = vuelos.stream()
+						.filter(c -> Duration.between(LocalDateTime.of(c.getFechaDeSalida(), c.getHoraDeSalida())
+								, LocalDateTime.of(c.getFechaDeLlegada(), c.getHoraDeLlegada())).toHours() > 10).collect(Collectors.toList());
+		System.out.println(masHoras2);
 
 
 		/*
@@ -127,30 +130,44 @@ public class Aeropuerto {
 		 * llegar a su destino.
 		 */
 
-		List<Vuelo> masUndia = vuelos.stream().filter(d -> d.getFechaDeSalida().compareTo(d.getFechaDeLlegada()) > 1)
-				.collect(Collectors.toList());
-		System.out.println(masUndia);
+		System.out.println("");
+		List<Vuelo> masDia = vuelos.stream()
+				.filter(c -> Duration.between(LocalDateTime.of(c.getFechaDeSalida(), c.getHoraDeSalida())
+						, LocalDateTime.of(c.getFechaDeLlegada(), c.getHoraDeLlegada())).toDays() > 1).collect(Collectors.toList());
+		System.out.println(masDia);
 
 		/*
 		 * * 5. ES UNA LISTA DE UNA LISTA Obtener una colección que almacene listado de
 		 * pasajeros agrupado por destino del vuelo, ordenada por el destino del vuelo.
 		 */
 
-		/*
-		 * * 6. Mostrar los vuelos que saldrán dentro de una semana (mas haya de 7
-		 * dias).
-		 */
-		List<Vuelo> vuelosMasSemana = vuelos.stream()
-				.filter(e -> e.getFechaDeSalida().equals(LocalDate.now().plusDays(8)))
-				.collect(Collectors.toList());
-		System.out.println(vuelosMasSemana);
+//		System.out.println("Ejercicio 5");
+//		Map<String, List<List<Pasajero>>> pasajerosPorDestino;
+//		pasajerosPorDestino = vuelos.stream().collect(Collectors.groupingBy(Vuelo::getDestino, Collectors.mapping(Vuelo::getPasajeros, Collectors.toList())));
+//		//sin ordenar, para ordenarlo lo copiamos a un treemap
+//		
+//		//lo ordenamos
+//		pasajerosPorDestino = new TreeMap<>((o1, o2) ->  {
+//			return o1.compareTo(o2);
+//		});
+//		//recorrer el mapa no ordenado al ordenado
+//		pasajerosPorDestino.putAll(pasajerosPorDestino);
 
-		/* 7. Mostrar los vuelos que saldrán en los próximos 7 días. */
-
-		List<Vuelo> vuelosSieteDias = vuelos.stream()
-				.filter(f -> f.getFechaDeSalida().isAfter(LocalDate.now().plusDays(7)))
-				.collect(Collectors.toList());
-		System.out.println(vuelosSieteDias);
+//		/*
+//		 * * 6. Mostrar los vuelos que saldrán dentro de una semana (mas haya de 7
+//		 * dias).
+//		 */
+//		List<Vuelo> vuelosMasSemana = vuelos.stream()
+//				.filter(e -> e.getFechaDeSalida().equals(LocalDate.now().plusDays(8)))
+//				.collect(Collectors.toList());
+//		System.out.println(vuelosMasSemana);
+//
+//		/* 7. Mostrar los vuelos que saldrán en los próximos 7 días. */
+//
+//		List<Vuelo> vuelosSieteDias = vuelos.stream()
+//				.filter(f -> f.getFechaDeSalida().isAfter(LocalDate.now().plusDays(7)))
+//				.collect(Collectors.toList());
+//		System.out.println(vuelosSieteDias);
 
 		/*
 		 * * 8. Crear una colección que almacene listado de pasajeros, agrupado por el
