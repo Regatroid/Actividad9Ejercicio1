@@ -1,6 +1,5 @@
 package com.principal;
 
-import java.sql.Time;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -157,10 +156,15 @@ public class Aeropuerto {
 //		 * * 6. Mostrar los vuelos que saldrán dentro de una semana (mas haya de 7
 //		 * dias).
 //		 */
+		System.out.println("Ejercicio 6    ");
 //		List<Vuelo> vuelosMasSemana = vuelos.stream()
-//				.filter(e -> e.getFechaDeSalida().equals(LocalDate.now().plusDays(8)))
+//				.filter(e -> e.getFechaDeSalida().equals(LocalDate.now().plusDays(7)))
 //				.collect(Collectors.toList());
 //		System.out.println(vuelosMasSemana);
+		
+		List<Vuelo> vuelosDentroDeUnaSemana = vuelos.stream()
+				.filter(e -> e.getFechaDeSalida().isAfter(LocalDate.now().plusDays(7)))
+				.collect(Collectors.toList());
 //
 //		/* 7. Mostrar los vuelos que saldrán en los próximos 7 días. */
 //
